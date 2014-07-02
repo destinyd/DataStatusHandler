@@ -50,14 +50,19 @@ public class DataStatusHandler {
         }
     }
 
+    public void set_cookie(String cookie) {
+        this.cookie = cookie;
+    }
+
+    public void set_toggle_listener(DataStatusToggleListener listener) {
+        mDataStatusToggleListener = listener;
+    }
+
+    //private
     private void handle(DataState dataState) {
         HttpRequest request = new HttpRequest(dataState.url, dataState.method);
         request.header("Cookie", cookie);
         new RequestTask().execute(request);
-    }
-
-    public void set_cookie(String cookie) {
-        this.cookie = cookie;
     }
 
     private boolean in_status(String dataStateName) {
@@ -66,10 +71,6 @@ public class DataStatusHandler {
         } else {
             throw new Error("no this state");
         }
-    }
-
-    public void setDataStatusToggleListener(DataStatusToggleListener listener) {
-        mDataStatusToggleListener = listener;
     }
 
     private void success() {
