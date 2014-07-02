@@ -33,9 +33,9 @@ public class DataStatusHandler {
             currentState = status.get(dataStateName);
     }
 
-    public String get_current() {
+    public DataState get_current() {
         if (currentState != null)
-            return currentState.name;
+            return currentState;
         return null;
     }
 

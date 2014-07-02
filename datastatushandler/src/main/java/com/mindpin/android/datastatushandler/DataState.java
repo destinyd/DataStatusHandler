@@ -8,9 +8,9 @@ import java.util.List;
  */
 public class DataState {
     //in(GET, POST, PUT, DELETE)
-    String method;
-    String name, desc, url;
-    int icon_res_id;
+    public String method;
+    public String name, desc, url;
+    public int icon_res_id;
     List<String> _methods = null;
 
     public DataState(String name, String desc, int icon_res_id, String url, String method) {
@@ -24,7 +24,7 @@ public class DataState {
             throw new Error("Not RESTful");
     }
 
-    List<String> getMethods() {
+    private List<String> getMethods() {
         if (_methods == null) {
             _methods = new ArrayList<String>();
             _methods.add("GET");
@@ -35,7 +35,7 @@ public class DataState {
         return _methods;
     }
 
-    boolean in_methods(String method) {
+    private boolean in_methods(String method) {
         return getMethods().contains(method);
     }
 }
